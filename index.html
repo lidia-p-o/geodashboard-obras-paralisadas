@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de Obras Paralisadas</title>
+  <meta name="description" content="Geodashboard experimental (dissertação de mestrado, Engenharia Urbana).">
+  <link rel="stylesheet" href="src/vendor/leaflet-1.9.4/leaflet.css">
+  <link rel="stylesheet" href="src/estilos/tokens.css?v=1.0.0-rc7">
+  <link rel="stylesheet" href="src/estilos/layout.css?v=1.0.0-rc7">
+  <link rel="stylesheet" href="src/estilos/componentes.css?v=1.0.0-rc7">
+  <link rel="stylesheet" href="src/estilos/tema.css?v=1.0.0-rc7">
+</head>
+<body data-estado="carregando">
+  <!-- Ícones (traço simples, sem biblioteca externa) — redesign rc7 -->
+  <svg class="visualmente-oculto" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-obra" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l4-3v14M9 7h11v3M13 10v3m-2 0h4M17 10v2M12 21v-4h4v4M5 13h4M5 17h4"/></symbol>
+      <symbol id="i-banco" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6M5 11.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/></symbol>
+      <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h2M12 14h2M16 14h1M8 17h2M12 17h2"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
+      <symbol id="i-filtro" viewBox="0 0 24 24"><path d="M4 5h16l-6.2 7.4V19l-3.6 1.6v-8.2z"/></symbol>
+      <symbol id="i-pino" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></symbol>
+      <symbol id="i-cidade" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9h5v12M10 21V4h6v17M16 21v-9h3.5v9M7 12h1M7 15h1M7 18h1M12.5 7h1M12.5 10h1M12.5 13h1M12.5 16h1"/></symbol>
+      <symbol id="i-camadas" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5zM3 12.5l9 5 9-5M3 16.5l9 5 9-5"/></symbol>
+      <symbol id="i-setor" viewBox="0 0 24 24"><path d="M3 21h18M4 21V11l5 3v-3l5 3v-3l5 3v7M17 21v-3h-3v3M6.5 17h1M10.5 17h1"/></symbol>
+      <symbol id="i-alvo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6"/></symbol>
+      <symbol id="i-desfazer" viewBox="0 0 24 24"><path d="M9 7 4.5 11.5 9 16"/><path d="M5 11.5h9.5a5 5 0 0 1 0 10H11"/></symbol>
+      <symbol id="i-recortar" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><path d="m9.5 7.5 5 5m0-5-5 5"/></symbol>
+      <symbol id="i-borracha" viewBox="0 0 24 24"><path d="m14.5 4.5 5 5-9.5 9.5H6l-2.5-2.5a1.5 1.5 0 0 1 0-2.1z"/><path d="m9 10 5 5M10 19h10"/></symbol>
+      <symbol id="i-mapa" viewBox="0 0 24 24"><path d="M3.5 6.5 9 4l6 2.5L20.5 4v13.5L15 20l-6-2.5-5.5 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></symbol>
+      <symbol id="i-barras" viewBox="0 0 24 24"><path d="M5 20v-6M10 20V9M15 20v-9M20 20V5"/></symbol>
+      <symbol id="i-tabela" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M3.5 14.5h17M9.5 9.5v10M15 9.5v10"/></symbol>
+      <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 7v6.5M12 16.8v.4"/></symbol>
+      <symbol id="i-moedas" viewBox="0 0 24 24"><ellipse cx="10" cy="7" rx="6" ry="2.5"/><path d="M4 7v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V7M4 11v4c0 1.4 2.7 2.5 6 2.5"/><ellipse cx="15.5" cy="15" rx="4.5" ry="2"/><path d="M11 15v3c0 1.1 2 2 4.5 2s4.5-.9 4.5-2v-3"/></symbol>
+      <symbol id="i-cadeado" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9.5" rx="2"/><path d="M8.5 11V7.5a3.5 3.5 0 0 1 6.8-1.2M12 15v2"/></symbol>
+    </defs>
+  </svg>
+  <div class="pagina">
+
+    <!-- 1 · Cabeçalho -->
+    <header class="area-cabecalho cabecalho" aria-labelledby="titulo-painel">
+      <div class="cabecalho__marca">
+        <svg class="cabecalho__logo" aria-hidden="true" focusable="false"><use href="#i-obra"/></svg>
+        <div class="cabecalho__texto">
+          <h1 id="titulo-painel" class="cabecalho__titulo">Painel de Obras Paralisadas</h1>
+          <p class="cabecalho__subtitulo"><strong>Escopo:</strong> obras não concluídas da base do TCU · investimento previsto, situação e macrocausas de paralisação</p>
+        </div>
+      </div>
+      <div class="cabecalho__meta">
+        <p class="cabecalho__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-banco"/></svg><span><strong>Fontes:</strong> TCU – Painel de Obras Paralisadas<br><span class="cabecalho__item-sec">IBGE – população 01/07/2026 · Malha Municipal 2025</span></span></p>
+        <p class="cabecalho__item"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-calendario"/></svg><span><strong>Data-base:</strong> abr/2025</span></p>
+        <button type="button" class="botao botao--cabecalho" id="botao-notas" aria-expanded="false" aria-controls="painel-notas">
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-info"/></svg> Notas e limitações
+        </button>
+      </div>
+      <section id="painel-notas" class="notas" hidden aria-labelledby="titulo-notas">
+        <h2 id="titulo-notas" class="notas__titulo">Notas e limitações</h2>
+        <ul class="notas__lista">
+          <li><strong>Indicador do mapa:</strong> investimento previsto total (R$) = soma dos valores de <code>Valor Investimento</code> das obras do território no recorte. Não é dividido pela população.</li>
+          <li><strong>Investimento previsto:</strong> campo original <code>Valor Investimento</code> do TCU. A definição oficial vigente do campo ainda precisa de confirmação direta junto ao TCU.</li>
+          <li><strong>Valor desbloqueado (já investido):</strong> quanto do valor previsto já foi desbloqueado. Segundo documentação do TCU (2019), é apurado de forma diferente conforme a base de origem; em alguns registros supera o valor previsto, como na fonte.</li>
+          <li><strong>Localização em nível municipal:</strong> as coordenadas da base representam o município, não a posição exata de cada obra.</li>
+          <li><strong>Obras do DNIT nas capitais:</strong> as 1.189 obras do DNIT (45,9% do investimento previsto) estão registradas na capital de cada UF, inclusive obras rodoviárias de outros municípios. Por isso, no mapa municipal, as capitais concentram valores elevados; os totais por UF não são afetados.</li>
+          <li><strong>Valores ausentes:</strong> 6 obras não têm <code>Valor Investimento</code> na fonte. Elas continuam na contagem e na tabela, mas não entram na soma (não são tratadas como zero). Os territórios com essas obras são classificados pela soma dos valores informados, que pode ser menor que o total real; a consulta do território indica quantas obras estão sem valor. Território cujas obras não têm nenhum valor aparece como “Valor não informado”.</li>
+          <li><strong>Macrocausas de paralisação:</strong> campo original <code>Macrocausa da paralisação</code> (6 categorias, uma por obra), sem reclassificação. O gráfico considera só as obras paralisadas do recorte. A categoria “6. Não informado / outros” reúne obras sem causa informada (6.783 das 11.469 paralisadas) e causas sem macrocausa específica (“Outros”, “Fato ou evento não previsto” etc., 721); a falta de informação se concentra nas bases SISMOB, FUNASA, SESU, DNIT e SETEC. Uma obra “Em execução” (SIMEC-1109825) tem macrocausa “1. Contratual” na fonte e não entra no gráfico.</li>
+          <li><strong>Duplicidades potenciais:</strong> registros semelhantes foram mantidos por não haver duplicidade comprovada.</li>
+          <li><strong>População:</strong> estimativa IBGE (01/07/2026), exibida na consulta do território como informação; não entra no cálculo do indicador.</li>
+          <li><strong>Classes:</strong> limites fixos nas três situações, por nível: UFs 1 · 2 · 4 · 8 bi; municípios 1 · 3 · 10 · 30 mi (R$). O limite superior pertence à classe.</li>
+          <li><strong>Malha:</strong> IBGE 2025 simplificada (tolerância de 100 m) para uso na web.</li>
+        </ul>
+      </section>
+    </header>
+
+    <!-- 3 · Filtros -->
+    <aside class="area-filtros filtros" aria-labelledby="titulo-filtros">
+      <div class="filtros__cabecalho">
+        <h2 id="titulo-filtros" class="filtros__titulo"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-filtro"/></svg>Filtros</h2>
+        <p class="filtros__estado" role="status">Carregando dados…</p>
+      </div>
+      <div class="filtros__corpo">
+
+      <div class="campo">
+        <label for="filtro-uf" class="campo__rotulo"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-pino"/></svg>Unidade Federativa</label>
+        <select id="filtro-uf" class="campo__controle" disabled><option>Todas</option></select>
+      </div>
+
+      <div class="campo">
+        <label for="filtro-municipio" class="campo__rotulo"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-cidade"/></svg>Município</label>
+        <select id="filtro-municipio" class="campo__controle" disabled aria-describedby="ajuda-municipio"><option value="">Todos</option></select>
+        <p id="ajuda-municipio" class="campo__ajuda">Habilitado após a escolha de uma UF.</p>
+      </div>
+
+      <fieldset class="campo campo--grupo" disabled>
+        <legend class="campo__rotulo"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-camadas"/></svg>Situação da obra</legend>
+        <label class="opcao"><input type="radio" name="situacao" value="todas" checked> Todas as obras</label>
+        <label class="opcao"><input type="radio" name="situacao" value="paralisadas"> Paralisadas</label>
+        <label class="opcao"><input type="radio" name="situacao" value="em_execucao"> Em execução</label>
+      </fieldset>
+
+      <div class="campo">
+        <label for="filtro-setor" class="campo__rotulo"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-setor"/></svg>Setor da obra</label>
+        <select id="filtro-setor" class="campo__controle" disabled><option value="">Todos os setores</option></select>
+      </div>
+
+      <section class="recorte" aria-labelledby="titulo-recorte" aria-live="polite">
+        <h3 id="titulo-recorte" class="recorte__titulo"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Recorte ativo</h3>
+        <p class="recorte__trilha">Brasil</p>
+        <p class="recorte__situacao">Situação: Todas as obras</p>
+        <p class="recorte__setor">Setor: Todos os setores</p>
+        <p class="recorte__macrocausa" hidden></p>
+      </section>
+
+      <div class="filtros__acoes">
+        <button type="button" class="botao botao--primario botao--bloco" data-acao="desfazer" disabled title="Desfazer a última seleção (Ctrl+Z)"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-desfazer"/></svg>Desfazer última seleção</button>
+        <button type="button" class="botao botao--contorno botao--bloco" data-acao="limpar-territorio" disabled><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-recortar"/></svg>Limpar seleção territorial</button>
+        <button type="button" class="botao botao--contorno botao--bloco" data-acao="limpar-tudo" disabled><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-borracha"/></svg>Limpar todos os filtros</button>
+      </div>
+      </div>
+    </aside>
+
+    <!-- 2 · Indicadores -->
+    <section class="area-indicadores indicadores" aria-label="Indicadores do recorte ativo" aria-live="polite">
+      <article class="cartao cartao--kpi">
+        <span class="cartao__icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-camadas"/></svg></span>
+        <div class="cartao__corpo">
+        <h2 class="cartao__titulo">Total de obras <span class="cartao__unidade">(nº de registros)</span></h2>
+        <p class="cartao__valor" data-kpi="total" data-carregando="true">—</p>
+        <p class="cartao__nota" data-kpi="total-nota">Carregando…</p>
+        </div>
+      </article>
+      <article class="cartao cartao--kpi">
+        <span class="cartao__icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-moedas"/></svg></span>
+        <div class="cartao__corpo">
+        <h2 class="cartao__titulo">Investimento previsto <span class="cartao__unidade">(R$, valor absoluto)</span></h2>
+        <p class="cartao__valor" data-kpi="investimento" data-carregando="true">—</p>
+        <p class="cartao__nota" data-kpi="investimento-nota">Soma de <code>Valor Investimento</code></p>
+        </div>
+      </article>
+      <article class="cartao cartao--kpi">
+        <span class="cartao__icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-cadeado"/></svg></span>
+        <div class="cartao__corpo">
+        <h2 class="cartao__titulo">Valor desbloqueado <span class="cartao__unidade">(já investido · R$, valor absoluto)</span></h2>
+        <p class="cartao__valor" data-kpi="desbloqueado" data-carregando="true">—</p>
+        <p class="cartao__nota" data-kpi="desbloqueado-nota">Soma de <code>Valor Desbloqueado</code></p>
+        </div>
+      </article>
+      <article class="cartao cartao--largo">
+        <h2 class="cartao__titulo"><svg class="icone icone--titulo" aria-hidden="true" focusable="false"><use href="#i-barras"/></svg>Distribuição por situação <span class="cartao__unidade">(nº de obras)</span></h2>
+        <div class="distribuicao distribuicao--vazia" role="img" aria-label="Carregando">
+          <span class="distribuicao__parte distribuicao__parte--paralisada"></span><span class="distribuicao__parte distribuicao__parte--execucao"></span>
+        </div>
+        <p class="cartao__nota cartao__nota--legenda">
+          <span class="legenda-item legenda-item--paralisada"><span class="amostra amostra--paralisada"></span>Paralisadas <strong data-kpi="paralisadas">—</strong></span>
+          <span class="legenda-item legenda-item--execucao"><span class="amostra amostra--execucao"></span>Em execução <strong data-kpi="execucao">—</strong></span>
+        </p>
+        <p class="cartao__nota" data-kpi="dist-nota"></p>
+      </article>
+    </section>
+
+    <!-- 4 + 5 + 7 · Área analítica principal -->
+    <div class="area-principal principal">
+      <section class="bloco mapa" aria-labelledby="titulo-mapa">
+        <header class="bloco__cabecalho">
+          <span class="bloco__icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-mapa"/></svg></span>
+          <h2 id="titulo-mapa" class="titulo-bloco">Investimento previsto total (R$)</h2>
+          <p class="bloco__subtitulo">Clique em uma UF para ver seus municípios · zoom e deslocamento não alteram os dados</p>
+        </header>
+        <div class="mapa__conteiner" id="mapa" data-carregando="true">
+          <div class="estado-vazio" role="status">
+            <p class="estado-vazio__titulo">Carregando mapa…</p>
+            <p class="estado-vazio__texto">Malha IBGE 2025 simplificada e indicador por território.</p>
+          </div>
+        </div>
+        <p class="bloco__rodape">Localização em nível municipal: o mapa não indica a posição exata das obras.</p>
+      </section>
+
+      <div class="painel-lateral">
+        <section class="bloco barras" aria-labelledby="titulo-barras">
+          <header class="bloco__cabecalho">
+            <span class="bloco__icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-barras"/></svg></span>
+            <h2 id="titulo-barras" class="titulo-bloco">Investimento previsto total (R$)</h2>
+            <p class="bloco__subtitulo">Comparação territorial · ordem decrescente · mesmas cores do mapa</p>
+          </header>
+          <div class="barras__conteiner" data-carregando="true">
+            <div class="estado-vazio" role="status">
+              <p class="estado-vazio__titulo">Carregando gráfico…</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7 · Painel de detalhes -->
+        <section class="detalhe" id="painel-detalhe" hidden aria-labelledby="titulo-detalhe" role="dialog" aria-modal="false">
+          <header class="detalhe__cabecalho">
+            <h2 id="titulo-detalhe" class="titulo-bloco">Detalhe da obra</h2>
+            <button type="button" class="botao-icone" id="fechar-detalhe" aria-label="Fechar detalhe (Esc)">×</button>
+          </header>
+          <div class="detalhe__corpo"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- 8 · Macrocausas de paralisação (decisão 0009): faixa entre a área principal e a tabela -->
+    <section class="area-macrocausas bloco macrocausas" aria-labelledby="titulo-macrocausas">
+      <header class="bloco__cabecalho bloco__cabecalho--linha">
+        <span class="bloco__icone bloco__icone--alerta"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg></span>
+        <h2 id="titulo-macrocausas" class="titulo-bloco">Macrocausas de paralisação</h2>
+        <p class="macrocausas__selo" hidden></p>
+        <p class="bloco__subtitulo">Obras paralisadas do recorte ativo</p>
+        <p class="macrocausas__aviso" role="status" hidden></p>
+      </header>
+      <div class="macrocausas__conteiner" data-carregando="true">
+        <div class="estado-vazio" role="status">
+          <p class="estado-vazio__titulo">Carregando gráfico…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · Tabela -->
+    <section class="area-tabela bloco tabela" aria-labelledby="titulo-tabela">
+      <header class="bloco__cabecalho bloco__cabecalho--linha">
+        <span class="bloco__icone"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-tabela"/></svg></span>
+        <h2 id="titulo-tabela" class="titulo-bloco">Obras do recorte</h2>
+        <p class="bloco__subtitulo">Clique em uma linha para abrir o detalhe · clique no título da coluna para ordenar</p>
+        <p class="tabela__aviso" role="status" hidden></p>
+      </header>
+      <div class="tabela__rolagem">
+        <table class="tabela__grade">
+          <caption class="visualmente-oculto">Obras do recorte ativo</caption>
+          <thead>
+            <tr>
+              <th scope="col" data-coluna="id"><button type="button">ID</button></th>
+              <th scope="col" data-coluna="empreendimento"><button type="button">Empreendimento</button></th>
+              <th scope="col" data-coluna="municipio"><button type="button">Município / UF</button></th>
+              <th scope="col" data-coluna="situacao"><button type="button">Situação</button></th>
+              <th scope="col" data-coluna="valor" class="num"><button type="button">Valor Investimento (R$)</button></th>
+              <th scope="col" data-coluna="exec_fisica" class="num"><button type="button">Exec. física (%)</button></th>
+              <th scope="col" data-coluna="setor"><button type="button">Setor</button></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tabela__vazia"><td colspan="7">Carregando registros…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="tabela__rodape">
+        <span>Valores ausentes aparecem como “não informado”, nunca como zero.</span>
+        <nav class="paginacao" aria-label="Paginação">
+          <button type="button" class="botao botao--secundario" disabled>‹ Anterior</button>
+          <span class="paginacao__texto">Página — de —</span>
+          <button type="button" class="botao botao--secundario" disabled>Próxima ›</button>
+        </nav>
+      </footer>
+    </section>
+
+    <footer class="area-rodape rodape">
+      <span>Protótipo experimental — dissertação de mestrado em Engenharia Urbana.</span>
+      <span id="estado-carregamento" role="status" aria-live="polite">Carregando dados processados…</span>
+    </footer>
+  </div>
+
+  <script>
+    // Aberta por file:// o navegador bloqueia os módulos e os dados: avisa em vez de ficar "carregando" (README).
+    if (location.protocol === 'file:') {
+      document.body.dataset.estado = 'erro';
+      document.getElementById('estado-carregamento').textContent = 'Não foi possível carregar os dados: a página foi aberta como arquivo local. Abra-a por um servidor HTTP local (README: python -m http.server).';
+      document.querySelectorAll('.estado-vazio__titulo').forEach((el) => { el.textContent = 'Dados indisponíveis'; });
+    }
+  </script>
+  <script src="src/vendor/leaflet-1.9.4/leaflet.js"></script>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/* Tokens visuais do geodashboard.
+   Paleta neutra para a interface; as cores temáticas do mapa vêm de
+   dados/processados/indicador/simbologia.json (decisão 0004) e são
+   reproduzidas aqui apenas para amostras de legenda. */
+:root {
+  /* Superfícies e texto */
+  --cor-fundo: #edf2f3;
+  --cor-superficie: #ffffff;
+  --cor-superficie-2: #f4f7f8;
+  --cor-borda: #dce4e7;
+  --cor-borda-forte: #9fb0b6;
+  --cor-texto: #17303a;          /* contraste ≥ 12:1 (branco e fundo) */
+  --cor-texto-2: #344d57;        /* ≥ 8:1 */
+  --cor-texto-3: #51666e;        /* ≥ 5,6:1 */
+  --cor-foco: #1d4ed8;
+
+  /* Identidade visual (redesign rc7): azul-petróleo e verde-azulado da rampa 'todas' (decisão 0006) */
+  --cor-petroleo: #0d4f58;       /* cabeçalho, títulos de destaque */
+  --cor-petroleo-2: #13646b;
+  --cor-teal: #155e63;           /* classe 5 da rampa 'todas' */
+  --cor-teal-medio: #248a88;     /* classe 4 */
+  --cor-teal-claro: #e0f2f1;     /* classe 1 */
+  --cor-teal-suave: #eef7f6;
+  --cor-quente: #c2564f;         /* macrocausas: tom quente das paralisações */
+  --cor-quente-trilho: #f6e4e2;
+  --cor-aviso-fundo: #fff7e0;
+  --cor-aviso-borda: #d6a400;
+  --cor-aviso-texto: #6b4e00;
+
+  /* Amostras de situação = cores-base definidas pela autora (classe 4 das escalas — simbologia.json, decisão 0006) */
+  --cor-paralisada: #b45353;
+  --cor-execucao: #3b82a3;
+
+  /* Seleção (independente da escala temática) */
+  --cor-selecao: #000000;
+  --cor-selecao-halo: #ffffff;
+  --cor-linha-selecionada: #fff4d6;
+
+  /* Tipografia */
+  --fonte: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif; /* fontes do sistema: funciona sem internet */
+  --fonte-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --tam-xs: 0.75rem;   /* 12 px */
+  --tam-s: 0.8125rem;  /* 13 px */
+  --tam-m: 0.875rem;   /* 14 px */
+  --tam-l: 1rem;       /* 16 px */
+  --tam-xl: 1.125rem;  /* 18 px */
+  --tam-kpi: 1.875rem; /* 30 px */
+
+  /* Espaçamento e forma */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --raio: 12px;
+  --raio-s: 8px;
+  --sombra: 0 1px 2px rgba(13, 79, 88, 0.06), 0 4px 14px rgba(13, 79, 88, 0.06);
+
+  /* Dimensões de layout */
+  --larg-filtros: 272px;
+  --larg-lateral: minmax(340px, 0.5fr);
+  --alt-principal: clamp(420px, 58vh, 620px);
+  --alt-tabela: clamp(240px, 32vh, 360px);
+}

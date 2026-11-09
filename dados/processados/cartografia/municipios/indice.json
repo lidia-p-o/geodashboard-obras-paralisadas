@@ -1,0 +1,283 @@
+{
+ "gerado_em": "2026-11-08",
+ "validacao_qgis": "QGIS 4.2.3 via MCP em 2026-11-08 sobre municipios.geojson (mesma malha antes da divisão): native:checkvalidity GEOS 5.573 válidas / 0 inválidas; native:coveragevalidate IS_VALID=true (cartografia-base.md §10.1)",
+ "areas_nao_municipais": [
+  "4300001",
+  "4300002"
+ ],
+ "ufs": {
+  "AC": {
+   "arquivo": "municipios/AC.json",
+   "sha256": "e5f46f730664aed0ab87ccb2cf456d50fb1790b2a167432bdee5b14080100354",
+   "bytes": 354085,
+   "n_geometrias": 22,
+   "n_indicador": 22,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "AL": {
+   "arquivo": "municipios/AL.json",
+   "sha256": "8a677e4a7e7bb6d95cd395b23c7d4255f018195e948900f9d3d05ce1a192d6ae",
+   "bytes": 224553,
+   "n_geometrias": 102,
+   "n_indicador": 102,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "AM": {
+   "arquivo": "municipios/AM.json",
+   "sha256": "39b87d9d318a3d9e8822d4ea47f8068356e744ba514fe7496717a41ba6b740a9",
+   "bytes": 2447115,
+   "n_geometrias": 62,
+   "n_indicador": 62,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "AP": {
+   "arquivo": "municipios/AP.json",
+   "sha256": "d5b1618a8e245a3aab007cfd69014d237496e0b068bf967b73bc01d349edb0bb",
+   "bytes": 406069,
+   "n_geometrias": 16,
+   "n_indicador": 16,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "BA": {
+   "arquivo": "municipios/BA.json",
+   "sha256": "9495274f042cbed3ca44974c3597a883f1d25adc8464313858ef0c2b3f9de83d",
+   "bytes": 2710265,
+   "n_geometrias": 417,
+   "n_indicador": 417,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "CE": {
+   "arquivo": "municipios/CE.json",
+   "sha256": "8304c6ec70c917aed511a3a27fec8a12d066e18356facc4d2b7766e8221277b1",
+   "bytes": 922661,
+   "n_geometrias": 184,
+   "n_indicador": 184,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "DF": {
+   "arquivo": "municipios/DF.json",
+   "sha256": "137fbce33994aecf8ba890c177023b4079ad0f09c9de1455b4c43acb4d1e2c30",
+   "bytes": 9286,
+   "n_geometrias": 1,
+   "n_indicador": 1,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "ES": {
+   "arquivo": "municipios/ES.json",
+   "sha256": "65c5c0c67022785d2b08778e1a6cb81e70f04daa2a4142cc1a9611641dbc2ef9",
+   "bytes": 529452,
+   "n_geometrias": 78,
+   "n_indicador": 78,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "GO": {
+   "arquivo": "municipios/GO.json",
+   "sha256": "f08b6ec66eaa6ee2881db29770ddf425c7f2f4f675d01068cf404c08c7379d9b",
+   "bytes": 2605184,
+   "n_geometrias": 246,
+   "n_indicador": 246,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "MA": {
+   "arquivo": "municipios/MA.json",
+   "sha256": "af84443aac7fc800b3b5a2d5b1b045df0746f3693afa6f04a5e8c51458a2e2ec",
+   "bytes": 1393776,
+   "n_geometrias": 217,
+   "n_indicador": 217,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "MG": {
+   "arquivo": "municipios/MG.json",
+   "sha256": "c0cbfee469001e245e63953fdccfa398e0aded486f5f3fe964c62caa19789d55",
+   "bytes": 5975930,
+   "n_geometrias": 853,
+   "n_indicador": 853,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "MS": {
+   "arquivo": "municipios/MS.json",
+   "sha256": "d6715ff44d182aac46cde48df93a06bf02a4499fd84c5a99ff3c1407ddafc186",
+   "bytes": 1359352,
+   "n_geometrias": 79,
+   "n_indicador": 79,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "MT": {
+   "arquivo": "municipios/MT.json",
+   "sha256": "377df122f7df81ed98587655c7fa3acf9f7f578cf7966667cc4156d2c3474607",
+   "bytes": 2966411,
+   "n_geometrias": 142,
+   "n_indicador": 142,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "PA": {
+   "arquivo": "municipios/PA.json",
+   "sha256": "afc36883dd488dd47b80ff460e13556e8a498e73a2447559d9e6e5a7d3435c42",
+   "bytes": 2017464,
+   "n_geometrias": 144,
+   "n_indicador": 144,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "PB": {
+   "arquivo": "municipios/PB.json",
+   "sha256": "29cd53dff4c04051cf8ff346010b72e0fa32bb46e8375fa65355a461e498ad92",
+   "bytes": 596859,
+   "n_geometrias": 223,
+   "n_indicador": 223,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "PE": {
+   "arquivo": "municipios/PE.json",
+   "sha256": "cc21cb6f419ed19429b8ebed76e2b9045ac2d357589f65f35c60410ff48bf23d",
+   "bytes": 615592,
+   "n_geometrias": 185,
+   "n_indicador": 185,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "PI": {
+   "arquivo": "municipios/PI.json",
+   "sha256": "29702fd5031a6c88b59ee6f9886944ea93660acb878fa8946bf36279b89c91c0",
+   "bytes": 697012,
+   "n_geometrias": 224,
+   "n_indicador": 224,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "PR": {
+   "arquivo": "municipios/PR.json",
+   "sha256": "6dba36ff7cbc6cb55274829a25491ae10d4d16ad949377f3b0ece7e49633e855",
+   "bytes": 2568660,
+   "n_geometrias": 399,
+   "n_indicador": 399,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "RJ": {
+   "arquivo": "municipios/RJ.json",
+   "sha256": "d33346d02c2fac50c582d1b0d1737c13a1d57805c4e4669c728327402310bbd0",
+   "bytes": 527051,
+   "n_geometrias": 92,
+   "n_indicador": 92,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "RN": {
+   "arquivo": "municipios/RN.json",
+   "sha256": "900fbafe3d479cf7bec6474b7707378f7dd621610851299c240b46fa092e6894",
+   "bytes": 296025,
+   "n_geometrias": 167,
+   "n_indicador": 167,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "RO": {
+   "arquivo": "municipios/RO.json",
+   "sha256": "da85a4c177fdd03580faf70b764cb5fe406f4a689203c040f636788de23b24c9",
+   "bytes": 696246,
+   "n_geometrias": 52,
+   "n_indicador": 52,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "RR": {
+   "arquivo": "municipios/RR.json",
+   "sha256": "b600c2129c6e0c464b9a81578e7540781aeac19d04db9ea2397cb01b885196ba",
+   "bytes": 401133,
+   "n_geometrias": 15,
+   "n_indicador": 15,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "RS": {
+   "arquivo": "municipios/RS.json",
+   "sha256": "12b64044c3c9a7a8c3da4c84cb889f868cc5941813c33b1967a4fb94af0abf4e",
+   "bytes": 2921682,
+   "n_geometrias": 499,
+   "n_indicador": 497,
+   "areas_nao_municipais": [
+    "4300001",
+    "4300002"
+   ],
+   "status": "validado",
+   "problemas": []
+  },
+  "SC": {
+   "arquivo": "municipios/SC.json",
+   "sha256": "ef8db9eb1359f1fe8b98fad3aef3b07c58609ab5f7aa46b541610d3eb2109449",
+   "bytes": 1532696,
+   "n_geometrias": 295,
+   "n_indicador": 295,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "SE": {
+   "arquivo": "municipios/SE.json",
+   "sha256": "2d35145ce0c4807b25059d7dc3eea9cd7d6ab1c542556fb58a072f3c97cc1207",
+   "bytes": 251207,
+   "n_geometrias": 75,
+   "n_indicador": 75,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "SP": {
+   "arquivo": "municipios/SP.json",
+   "sha256": "da99a9ad8d5015a375a7e08de2c860a1eebc64ebdd589df93e192123beb9eafb",
+   "bytes": 3312464,
+   "n_geometrias": 645,
+   "n_indicador": 645,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  },
+  "TO": {
+   "arquivo": "municipios/TO.json",
+   "sha256": "cc06d1b824b478df1800d6e58f1c04b5238a65f91adf8c2dd8c5914256a9f5e5",
+   "bytes": 1612856,
+   "n_geometrias": 139,
+   "n_indicador": 139,
+   "areas_nao_municipais": [],
+   "status": "validado",
+   "problemas": []
+  }
+ }
+}

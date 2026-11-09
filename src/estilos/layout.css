@@ -1,0 +1,74 @@
+/* Layout geral — posições aprovadas no wireframe (docs/especificacao-interface.md §1).
+   1 cabeçalho (topo) · 3 filtros (coluna esquerda) · 2 indicadores (faixa superior)
+   4 mapa (centro) · 5 barras (direita do mapa) · 7 detalhe (sobre 5)
+   8 macrocausas (faixa entre a área principal e a tabela; decisão 0009) · 6 tabela (inferior) */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+  font-size: var(--tam-m);
+  line-height: 1.45;
+  min-width: 1024px;            /* uso em computador (D-01) */
+}
+
+.pagina {
+  display: grid;
+  grid-template-columns: var(--larg-filtros) minmax(0, 1fr);
+  grid-template-areas:
+    "cabecalho  cabecalho"
+    "filtros    indicadores"
+    "filtros    principal"
+    "filtros    macrocausas"
+    "filtros    tabela"
+    "rodape     rodape";
+  gap: var(--esp-4);
+  padding: var(--esp-4);
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.area-cabecalho   { grid-area: cabecalho; }
+.area-filtros     { grid-area: filtros; align-self: stretch; }
+.area-indicadores { grid-area: indicadores; }
+.area-principal   { grid-area: principal; }
+.area-macrocausas { grid-area: macrocausas; }
+.area-tabela      { grid-area: tabela; }
+.area-rodape      { grid-area: rodape; }
+
+/* Mapa (predominante) + coluna lateral (barras / detalhe) */
+.principal {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) var(--larg-lateral);
+  gap: var(--esp-3);
+  height: var(--alt-principal);
+}
+.principal > .mapa, .painel-lateral { height: 100%; min-height: 0; }
+
+.painel-lateral {
+  position: relative;           /* o painel de detalhe se sobrepõe às barras */
+  min-width: 0;
+}
+
+/* Resoluções de computador */
+@media (min-width: 1680px) {
+  :root { --larg-filtros: 272px; --alt-principal: clamp(480px, 60vh, 720px); }
+}
+
+@media (max-width: 1365px) {
+  :root { --larg-filtros: 228px; --larg-lateral: minmax(300px, 0.55fr); }
+}
+
+/* Telas estreitas (< 1200 px): barras passam para baixo do mapa, preservando a ordem de leitura */
+@media (max-width: 1199px) {
+  .principal { grid-template-columns: minmax(0, 1fr); }
+  .indicadores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .principal { height: auto; }
+  .principal > .mapa { height: var(--alt-principal); }
+  .painel-lateral { height: 420px; }
+}
