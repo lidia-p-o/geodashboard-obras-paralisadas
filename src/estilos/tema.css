@@ -233,3 +233,25 @@ code { background: var(--cor-teal-suave); }
   .mapa__conteiner .legenda .legenda__lista { font-size: var(--tam-xs); }
   .mapa__conteiner .legenda .legenda__lista li { line-height: 1.6; }
 }
+
+/* ---------- macrocausas na coluna direita, abaixo do ranking (rc8) ----------
+   Coluna estreita: rótulo numa linha; barra e valor na linha de baixo. Ordem, escala, cores e regras inalteradas. */
+.painel-lateral .macrocausas .titulo-bloco { font-size: 1.0625rem; }
+.painel-lateral .macrocausas .bloco__cabecalho--linha { padding: 14px 16px 4px; column-gap: 10px; row-gap: 3px; grid-template-columns: auto minmax(0, 1fr); }
+.painel-lateral .macrocausas .bloco__icone--alerta { grid-row: 1; }
+.painel-lateral .macrocausas .titulo-bloco { grid-column: 2; grid-row: 1; white-space: nowrap; }
+.painel-lateral .macrocausas .bloco__icone--alerta { width: 26px; height: 26px; }
+.painel-lateral .macrocausas .bloco__icone--alerta .icone { width: 19px; height: 19px; }
+.painel-lateral .macrocausas__selo { grid-column: 2; grid-row: 2; justify-self: start; padding: 2px 9px; }
+.painel-lateral .macrocausas .bloco__subtitulo { grid-column: 1 / 3; grid-row: 3; font-size: var(--tam-xs); }
+.painel-lateral .macrocausas__aviso { grid-column: 1 / 3; grid-row: 4; }
+.painel-lateral .macrocausas__conteiner { padding: 4px 12px 12px; }
+.painel-lateral .macrocausa__botao {
+  grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "rotulo valor" "trilho trilho";
+  row-gap: 3px; column-gap: 10px; padding: 3px 6px;
+}
+.painel-lateral .macrocausa__rotulo { grid-area: rotulo; font-size: var(--tam-s); }
+.painel-lateral .macrocausa__valor { grid-area: valor; font-size: var(--tam-s); }
+.painel-lateral .macrocausa__trilho { grid-area: trilho; height: 12px; }
+.painel-lateral .macrocausa--residual { margin-top: 3px; padding-top: 3px; }
+.painel-lateral .macrocausas__vazio { min-height: 243px; }

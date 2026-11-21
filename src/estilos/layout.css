@@ -1,7 +1,7 @@
 /* Layout geral — posições aprovadas no wireframe (docs/especificacao-interface.md §1).
    1 cabeçalho (topo) · 3 filtros (coluna esquerda) · 2 indicadores (faixa superior)
    4 mapa (centro) · 5 barras (direita do mapa) · 7 detalhe (sobre 5)
-   8 macrocausas (faixa entre a área principal e a tabela; decisão 0009) · 6 tabela (inferior) */
+   8 macrocausas (coluna direita, abaixo das barras — rc8; decisão 0009) · 6 tabela (inferior) */
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -24,7 +24,6 @@ body {
     "cabecalho  cabecalho"
     "filtros    indicadores"
     "filtros    principal"
-    "filtros    macrocausas"
     "filtros    tabela"
     "rodape     rodape";
   gap: var(--esp-4);
@@ -37,23 +36,26 @@ body {
 .area-filtros     { grid-area: filtros; align-self: stretch; }
 .area-indicadores { grid-area: indicadores; }
 .area-principal   { grid-area: principal; }
-.area-macrocausas { grid-area: macrocausas; }
 .area-tabela      { grid-area: tabela; }
 .area-rodape      { grid-area: rodape; }
 
-/* Mapa (predominante) + coluna lateral (barras / detalhe) */
+/* Mapa (predominante) + coluna lateral: barras em cima, macrocausas embaixo (rc8); o detalhe se sobrepõe à coluna.
+   A altura soma a da área de barras e a do módulo de macrocausas: o mapa acompanha a coluna inteira. */
 .principal {
   display: grid;
   grid-template-columns: minmax(0, 2fr) var(--larg-lateral);
   gap: var(--esp-3);
-  height: var(--alt-principal);
+  height: calc(var(--alt-principal) + var(--alt-macrocausas));
 }
 .principal > .mapa, .painel-lateral { height: 100%; min-height: 0; }
 
 .painel-lateral {
-  position: relative;           /* o painel de detalhe se sobrepõe às barras */
+  position: relative;           /* o painel de detalhe se sobrepõe à coluna */
   min-width: 0;
+  display: flex; flex-direction: column; gap: var(--esp-3);
 }
+.painel-lateral > .barras { flex: 1 1 auto; height: auto; min-height: 0; }
+.painel-lateral > .macrocausas { flex: none; }
 
 /* Resoluções de computador */
 @media (min-width: 1680px) {
@@ -70,5 +72,6 @@ body {
   .indicadores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .principal { height: auto; }
   .principal > .mapa { height: var(--alt-principal); }
-  .painel-lateral { height: 420px; }
+  .painel-lateral { height: auto; }
+  .painel-lateral > .barras { height: 420px; flex: none; }
 }

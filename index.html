@@ -6,10 +6,10 @@
   <title>Painel de Obras Paralisadas</title>
   <meta name="description" content="Geodashboard experimental (dissertação de mestrado, Engenharia Urbana).">
   <link rel="stylesheet" href="src/vendor/leaflet-1.9.4/leaflet.css">
-  <link rel="stylesheet" href="src/estilos/tokens.css?v=1.0.0-rc7">
-  <link rel="stylesheet" href="src/estilos/layout.css?v=1.0.0-rc7">
-  <link rel="stylesheet" href="src/estilos/componentes.css?v=1.0.0-rc7">
-  <link rel="stylesheet" href="src/estilos/tema.css?v=1.0.0-rc7">
+  <link rel="stylesheet" href="src/estilos/tokens.css?v=1.0.0-rc8">
+  <link rel="stylesheet" href="src/estilos/layout.css?v=1.0.0-rc8">
+  <link rel="stylesheet" href="src/estilos/componentes.css?v=1.0.0-rc8">
+  <link rel="stylesheet" href="src/estilos/tema.css?v=1.0.0-rc8">
 </head>
 <body data-estado="carregando">
   <!-- Ícones (traço simples, sem biblioteca externa) — redesign rc7 -->
@@ -189,6 +189,22 @@
           </div>
         </section>
 
+        <!-- 8 · Macrocausas de paralisação (decisão 0009): coluna direita, abaixo do ranking (rc8) -->
+        <section class="bloco macrocausas" aria-labelledby="titulo-macrocausas">
+          <header class="bloco__cabecalho bloco__cabecalho--linha">
+            <span class="bloco__icone bloco__icone--alerta"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg></span>
+            <h2 id="titulo-macrocausas" class="titulo-bloco">Macrocausas de paralisação</h2>
+            <p class="macrocausas__selo" hidden></p>
+            <p class="bloco__subtitulo">Obras paralisadas do recorte ativo</p>
+            <p class="macrocausas__aviso" role="status" hidden></p>
+          </header>
+          <div class="macrocausas__conteiner" data-carregando="true">
+            <div class="estado-vazio" role="status">
+              <p class="estado-vazio__titulo">Carregando gráfico…</p>
+            </div>
+          </div>
+        </section>
+
         <!-- 7 · Painel de detalhes -->
         <section class="detalhe" id="painel-detalhe" hidden aria-labelledby="titulo-detalhe" role="dialog" aria-modal="false">
           <header class="detalhe__cabecalho">
@@ -199,22 +215,6 @@
         </section>
       </div>
     </div>
-
-    <!-- 8 · Macrocausas de paralisação (decisão 0009): faixa entre a área principal e a tabela -->
-    <section class="area-macrocausas bloco macrocausas" aria-labelledby="titulo-macrocausas">
-      <header class="bloco__cabecalho bloco__cabecalho--linha">
-        <span class="bloco__icone bloco__icone--alerta"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg></span>
-        <h2 id="titulo-macrocausas" class="titulo-bloco">Macrocausas de paralisação</h2>
-        <p class="macrocausas__selo" hidden></p>
-        <p class="bloco__subtitulo">Obras paralisadas do recorte ativo</p>
-        <p class="macrocausas__aviso" role="status" hidden></p>
-      </header>
-      <div class="macrocausas__conteiner" data-carregando="true">
-        <div class="estado-vazio" role="status">
-          <p class="estado-vazio__titulo">Carregando gráfico…</p>
-        </div>
-      </div>
-    </section>
 
     <!-- 6 · Tabela -->
     <section class="area-tabela bloco tabela" aria-labelledby="titulo-tabela">
