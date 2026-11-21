@@ -1,6 +1,7 @@
 // Seletores: funções puras sobre (dados, estado). Sem acesso ao DOM ou ao Leaflet.
 // Agregação territorial ao vivo (decisão 0008): mesma regra do pipeline (preparar_web.py › categoria),
 // necessária para o filtro de setor; sem setor, o resultado é conferido com indicadores.json (recorte.js).
+import { classesDoRecorte } from './classes.js?v=1.0.0-rc10';
 
 const SITUACAO_FONTE = { paralisadas: 'Paralisada', em_execucao: 'Em execução' };
 
@@ -121,7 +122,7 @@ export function territoriosDoNivel(dados, filtros) {
     a.n++;
     if (col[i] === null) a.ids.push(o.colunas.id[i]); else a.soma += col[i];
   }
-  const limites = dados.referencia.classes[nivel].limites_centavos;
+  const limites = classesDoRecorte(dados.referencia, nivel, filtros).limites_centavos; // decisão 0011
   return fonte.map((t) => {
     const a = ag.get(nivel === 'UF' ? t.sigla_uf : t.cd) ?? { n: 0, soma: 0, ids: [] };
     return {

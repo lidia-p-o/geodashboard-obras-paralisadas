@@ -1,6 +1,6 @@
 // Painel de detalhes (7): aberto somente com obra selecionada; sobreposto ao gráfico; fecha com × ou Esc.
-import { detalheObra } from '../dados/seletores.js';
-import { reaisExato, percentualFonte } from './formatacao.js';
+import { detalheObra } from '../dados/seletores.js?v=1.0.0-rc10';
+import { reaisExato, percentualFonte } from './formatacao.js?v=1.0.0-rc10';
 
 export function iniciarDetalhe(raiz, dados, store) {
   const corpo = raiz.querySelector('.detalhe__corpo');

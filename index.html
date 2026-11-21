@@ -6,10 +6,10 @@
   <title>Painel de Obras Paralisadas</title>
   <meta name="description" content="Geodashboard experimental (dissertação de mestrado, Engenharia Urbana).">
   <link rel="stylesheet" href="src/vendor/leaflet-1.9.4/leaflet.css">
-  <link rel="stylesheet" href="src/estilos/tokens.css?v=1.0.0-rc9">
-  <link rel="stylesheet" href="src/estilos/layout.css?v=1.0.0-rc9">
-  <link rel="stylesheet" href="src/estilos/componentes.css?v=1.0.0-rc9">
-  <link rel="stylesheet" href="src/estilos/tema.css?v=1.0.0-rc9">
+  <link rel="stylesheet" href="src/estilos/tokens.css?v=1.0.0-rc10">
+  <link rel="stylesheet" href="src/estilos/layout.css?v=1.0.0-rc10">
+  <link rel="stylesheet" href="src/estilos/componentes.css?v=1.0.0-rc10">
+  <link rel="stylesheet" href="src/estilos/tema.css?v=1.0.0-rc10">
 </head>
 <body data-estado="carregando">
   <!-- Ícones (traço simples, sem biblioteca externa) — redesign rc7 -->
@@ -66,7 +66,7 @@
           <li><strong>Macrocausas de paralisação:</strong> campo original <code>Macrocausa da paralisação</code> (6 categorias, uma por obra), sem reclassificação. O gráfico mostra o investimento previsto (R$ milhões, soma dos valores informados) das obras paralisadas do recorte por macrocausa e o % do total. A categoria “6. Não informado / outros” reúne obras sem causa informada (6.783 das 11.469 paralisadas) e causas sem macrocausa específica (“Outros”, “Fato ou evento não previsto” etc., 721); a falta de informação se concentra nas bases SISMOB, FUNASA, SESU, DNIT e SETEC. Uma obra “Em execução” (SIMEC-1109825) tem macrocausa “1. Contratual” na fonte e não entra no gráfico.</li>
           <li><strong>Duplicidades potenciais:</strong> registros semelhantes foram mantidos por não haver duplicidade comprovada.</li>
           <li><strong>População:</strong> estimativa IBGE (01/07/2026), exibida na consulta do território como informação; não entra no cálculo do indicador.</li>
-          <li><strong>Classes:</strong> limites fixos nas três situações, por nível: UFs 1 · 2 · 4 · 8 bi; municípios 1 · 3 · 10 · 30 mi (R$). O limite superior pertence à classe.</li>
+          <li><strong>Classes:</strong> limites fixos nas três situações, por nível: UFs 1 · 2 · 4 · 8 bi; municípios 1 · 3 · 10 · 30 mi (R$). O limite superior pertence à classe. Com filtro de macrocausa, as UFs usam 30 · 100 · 300 · 1.000 mi.</li>
           <li><strong>Malha:</strong> IBGE 2025 simplificada (tolerância de 100 m) para uso na web.</li>
         </ul>
       </section>
@@ -268,6 +268,6 @@
     }
   </script>
   <script src="src/vendor/leaflet-1.9.4/leaflet.js"></script>
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/main.js?v=1.0.0-rc10"></script>
 </body>
 </html>

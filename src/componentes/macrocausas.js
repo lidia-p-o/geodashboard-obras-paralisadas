@@ -2,7 +2,7 @@
 // Investimento previsto (R$ milhões) das obras PARALISADAS do recorte ativo por macrocausa (rc9; até a rc8, nº de obras).
 // Campo original, sem reclassificação; soma só dos valores informados (ausentes não viram zero).
 // Lê apenas recorte.macrocausas (src/dados/recorte.js); clique numa barra → ação definir/selecionar macrocausa.
-import { inteiro, pct, reaisExato, reaisMilhoes } from './formatacao.js';
+import { inteiro, pct, reaisExato, reaisMilhoes } from './formatacao.js?v=1.0.0-rc10';
 
 const CAT_SEM_INFORMACAO = '6. Não informado / outros'; // categoria residual da fonte: sempre por último, em cinza
 export const PREFIXO_AVISO_MACROCAUSA = 'Filtro de macrocausa';

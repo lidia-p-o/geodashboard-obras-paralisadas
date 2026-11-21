@@ -1,9 +1,9 @@
 // Mapa coroplético (Leaflet). Reage ao estado; ações do usuário são enviadas ao estado.
 // Zoom e deslocamento só alteram o enquadramento (não geram ações). Sem mapa-base externo.
 /* global L */
-import { obterMunicipiosValidados } from '../dados/carregador.js';
-import { preenchimento, limitesLegenda, especiais, ROTULO_SITUACAO, defsPadroes } from './simbologia.js';
-import { reaisCompacto, inteiro, reaisExato } from '../componentes/formatacao.js';
+import { obterMunicipiosValidados } from '../dados/carregador.js?v=1.0.0-rc10';
+import { preenchimento, limitesLegenda, especiais, ROTULO_SITUACAO, defsPadroes } from './simbologia.js?v=1.0.0-rc10';
+import { reaisCompacto, inteiro, reaisExato } from '../componentes/formatacao.js?v=1.0.0-rc10';
 
 const ESTILO_BASE = { weight: 0.6, color: '#ffffff', opacity: 1, fillOpacity: 1 };
 
@@ -146,7 +146,7 @@ export function iniciarMapa(elemento, dados, store) {
 
   /** Legenda (regra 9): intervalos numéricos das classes, unidade, situação e contagem de territórios exibidos. */
   function atualizarLegenda(nivel, situacao, territorios, nExtras, setorAtivo = null, macroAtiva = null) {
-    const { rotulos: faixas, limitesCentavos } = limitesLegenda(nivel);
+    const { rotulos: faixas, limitesCentavos, unidade } = limitesLegenda(nivel, { macrocausa: macroAtiva });
     const cont = {};
     territorios.forEach((t) => { cont[t.classe] = (cont[t.classe] ?? 0) + 1; });
     cont.sem_dado = (cont.sem_dado ?? 0) + nExtras;
@@ -162,7 +162,7 @@ export function iniciarMapa(elemento, dados, store) {
     };
     legenda.getContainer().innerHTML = `
       <p class="legenda__titulo">Investimento previsto (R$) <span class="legenda__situacao">${ROTULO_SITUACAO[situacao]}</span></p>${setorAtivo ? `<p class="legenda__setor">Setor: ${setorAtivo}</p>` : ''}${macroAtiva ? `<p class="legenda__macrocausa">Macrocausa: ${macroAtiva}</p>` : ''}
-      <p class="legenda__texto legenda__unidade">Valores em R$ ${nivel === 'UF' ? 'bilhões' : 'milhões · (nº de municípios)'}</p>
+      <p class="legenda__texto legenda__unidade">Valores em R$ ${unidade}${nivel === 'UF' ? '' : ' · (nº de municípios)'}</p>
       <ul class="legenda__lista">${faixas.map((f, i) => item(String(i + 1), preenchimento(situacao, i + 1), f, false,
         i < 4 ? `Até ${reaisExato(limitesCentavos[i])}, inclusive` : `Acima de ${reaisExato(limitesCentavos[3])}`)).join('')}</ul>
       <ul class="legenda__lista legenda__lista--especial">
@@ -171,7 +171,9 @@ export function iniciarMapa(elemento, dados, store) {
         ${item('nao_informado', esp.nao_informado.preenchimento, esp.nao_informado.rotulo, false, '', true)}
         ${item('sem_dado', esp.sem_dado.preenchimento, esp.sem_dado.rotulo, false, '', true)}
       </ul>
-      <p class="legenda__nota" title="Classes ${nivel === 'UF' ? 'estaduais' : 'municipais'} fixas, iguais nas três situações; limite superior incluído na classe.">Classes fixas nas três situações; limite superior incluído.</p>`;
+      ${nivel === 'UF' && macroAtiva
+        ? '<p class="legenda__nota" title="Com filtro de macrocausa, as classes estaduais passam a 30 · 100 · 300 · 1.000 mi (decisão 0011); limite superior incluído na classe.">Classes em milhões com filtro de macrocausa; limite superior incluído.</p>'
+        : `<p class="legenda__nota" title="Classes ${nivel === 'UF' ? 'estaduais' : 'municipais'} fixas, iguais nas três situações; limite superior incluído na classe.">Classes fixas nas três situações; limite superior incluído.</p>`}`;
   }
 
   async function renderizar(estado, tipo) {

@@ -1,5 +1,5 @@
 // Faixa de indicadores (2). Recalcula a cada mudança de filtro; não reage a zoom, realce ou tabela.
-import { inteiro, pct, reaisAbreviado, reaisExato } from './formatacao.js';
+import { inteiro, pct, reaisAbreviado, reaisExato } from './formatacao.js?v=1.0.0-rc10';
 
 export function iniciarIndicadores(raiz, dados, store) {
   const q = (s) => raiz.querySelector(s);

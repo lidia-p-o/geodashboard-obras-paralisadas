@@ -1,6 +1,6 @@
 // Tabela de obras (6): recorte ativo, ordenação e paginação; clique abre o detalhe.
-import { paginaTabela } from '../dados/seletores.js';
-import { inteiro, reaisExato, percentualFonte } from './formatacao.js';
+import { paginaTabela } from '../dados/seletores.js?v=1.0.0-rc10';
+import { inteiro, reaisExato, percentualFonte } from './formatacao.js?v=1.0.0-rc10';
 
 export function iniciarTabela(raiz, dados, store) {
   const corpo = raiz.querySelector('tbody');

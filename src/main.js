@@ -1,18 +1,18 @@
 // Ponto de entrada: carrega dados processados, cria o estado compartilhado e conecta as vistas.
 // Fluxo: evento → ação → estado → seletores → vistas (docs/especificacao-interface.md §4).
-import { carregarDados } from './dados/carregador.js';
-import { prepararObras } from './dados/seletores.js';
-import { criarRecorte } from './dados/recorte.js';
-import { criarEstado } from './estado/estado.js';
-import { configurarSimbologia } from './mapa/simbologia.js';
-import { iniciarMapa } from './mapa/mapa.js';
-import { iniciarCabecalho } from './componentes/cabecalho.js';
-import { iniciarIndicadores } from './componentes/indicadores.js';
-import { iniciarFiltros } from './componentes/filtros.js';
-import { iniciarBarras } from './componentes/barras.js';
-import { iniciarTabela } from './componentes/tabela.js';
-import { iniciarMacrocausas } from './componentes/macrocausas.js';
-import { iniciarDetalhe } from './componentes/detalhe.js';
+import { carregarDados } from './dados/carregador.js?v=1.0.0-rc10';
+import { prepararObras } from './dados/seletores.js?v=1.0.0-rc10';
+import { criarRecorte } from './dados/recorte.js?v=1.0.0-rc10';
+import { criarEstado } from './estado/estado.js?v=1.0.0-rc10';
+import { configurarSimbologia } from './mapa/simbologia.js?v=1.0.0-rc10';
+import { iniciarMapa } from './mapa/mapa.js?v=1.0.0-rc10';
+import { iniciarCabecalho } from './componentes/cabecalho.js?v=1.0.0-rc10';
+import { iniciarIndicadores } from './componentes/indicadores.js?v=1.0.0-rc10';
+import { iniciarFiltros } from './componentes/filtros.js?v=1.0.0-rc10';
+import { iniciarBarras } from './componentes/barras.js?v=1.0.0-rc10';
+import { iniciarTabela } from './componentes/tabela.js?v=1.0.0-rc10';
+import { iniciarMacrocausas } from './componentes/macrocausas.js?v=1.0.0-rc10';
+import { iniciarDetalhe } from './componentes/detalhe.js?v=1.0.0-rc10';
 
 const status = document.getElementById('estado-carregamento');
 iniciarCabecalho();

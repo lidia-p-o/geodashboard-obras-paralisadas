@@ -1,6 +1,6 @@
 // Gráfico de barras horizontais (5) em SVG próprio. Mesmos territórios, valores e cores do mapa.
-import { preenchimento, defsPadroes, ROTULO_SITUACAO } from '../mapa/simbologia.js';
-import { reaisCompacto, reaisExato, inteiro } from './formatacao.js';
+import { preenchimento, defsPadroes, ROTULO_SITUACAO } from '../mapa/simbologia.js?v=1.0.0-rc10';
+import { reaisCompacto, reaisExato, inteiro } from './formatacao.js?v=1.0.0-rc10';
 
 const ALT = 18;      // altura da barra
 const PASSO = 24;    // espaçamento vertical

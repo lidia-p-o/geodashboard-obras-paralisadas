@@ -1,12 +1,13 @@
 // Simbologia temática compartilhada por mapa, legenda e barras (fonte: simbologia.json — decisão 0004).
 // Mantém a correspondência visual: o mesmo território recebe a mesma cor no mapa e no gráfico.
+import { classesDoRecorte } from '../dados/classes.js?v=1.0.0-rc10';
 
 let SIMB = null;
-let CLASSES = null;
+let REFERENCIA = null;
 
 export function configurarSimbologia(referencia) {
   SIMB = referencia.simbologia;
-  CLASSES = referencia.classes;
+  REFERENCIA = referencia;
 }
 
 export const escala = (situacao) => SIMB.escalas[situacao];
@@ -19,9 +20,10 @@ export function preenchimento(situacao, categoria) {
   return especiais()[categoria]?.preenchimento ?? '#f0f0f0';
 }
 
-/** Rótulos das 5 classes na legenda e limites exatos (centavos) para o nível (decisão 0007). */
-export function limitesLegenda(nivel) {
-  return { rotulos: CLASSES[nivel].rotulos_legenda, limitesCentavos: CLASSES[nivel].limites_centavos };
+/** Rótulos das 5 classes na legenda, limites exatos (centavos) e unidade para o nível e os filtros (decisões 0007 e 0011). */
+export function limitesLegenda(nivel, filtros = {}) {
+  const c = classesDoRecorte(REFERENCIA, nivel, filtros);
+  return { rotulos: c.rotulos_legenda, limitesCentavos: c.limites_centavos, unidade: c.unidade };
 }
 
 export const ROTULO_SITUACAO = { todas: 'Todas as obras', paralisadas: 'Paralisadas', em_execucao: 'Em execução' };

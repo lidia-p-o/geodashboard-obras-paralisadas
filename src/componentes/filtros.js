@@ -1,5 +1,5 @@
 // Bloco de filtros (3). Seleção territorial ≡ filtros UF/município (D-05).
-import { ROTULO_SITUACAO } from '../mapa/simbologia.js';
+import { ROTULO_SITUACAO } from '../mapa/simbologia.js?v=1.0.0-rc10';
 
 export function iniciarFiltros(raiz, dados, store) {
   const selUF = raiz.querySelector('#filtro-uf');

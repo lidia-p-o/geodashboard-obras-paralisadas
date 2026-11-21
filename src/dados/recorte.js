@@ -5,7 +5,7 @@
 //   barras/mapa  → recorte.territorios (investimento previsto total agregado das obras do recorte)
 //   macrocausas  → recorte.macrocausas (obras paralisadas do recorte por macrocausa; decisão 0009)
 // Nenhum componente filtra ou soma registros por conta própria.
-import { indicesRecorte, calcularKpisDeIndices, territoriosDoNivel, ordenarParaBarras, macrocausasDoRecorte } from './seletores.js';
+import { indicesRecorte, calcularKpisDeIndices, territoriosDoNivel, ordenarParaBarras, macrocausasDoRecorte } from './seletores.js?v=1.0.0-rc10';
 
 const chaveFiltros = (f) => `${f.uf ?? ''}|${f.municipio ?? ''}|${f.situacao}|${f.setor ?? ''}|${f.macrocausa ?? ''}`;
 
