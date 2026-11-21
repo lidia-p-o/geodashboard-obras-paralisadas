@@ -6,10 +6,10 @@
   <title>Painel de Obras Paralisadas</title>
   <meta name="description" content="Geodashboard experimental (dissertação de mestrado, Engenharia Urbana).">
   <link rel="stylesheet" href="src/vendor/leaflet-1.9.4/leaflet.css">
-  <link rel="stylesheet" href="src/estilos/tokens.css?v=1.0.0-rc8">
-  <link rel="stylesheet" href="src/estilos/layout.css?v=1.0.0-rc8">
-  <link rel="stylesheet" href="src/estilos/componentes.css?v=1.0.0-rc8">
-  <link rel="stylesheet" href="src/estilos/tema.css?v=1.0.0-rc8">
+  <link rel="stylesheet" href="src/estilos/tokens.css?v=1.0.0-rc9">
+  <link rel="stylesheet" href="src/estilos/layout.css?v=1.0.0-rc9">
+  <link rel="stylesheet" href="src/estilos/componentes.css?v=1.0.0-rc9">
+  <link rel="stylesheet" href="src/estilos/tema.css?v=1.0.0-rc9">
 </head>
 <body data-estado="carregando">
   <!-- Ícones (traço simples, sem biblioteca externa) — redesign rc7 -->
@@ -63,7 +63,7 @@
           <li><strong>Localização em nível municipal:</strong> as coordenadas da base representam o município, não a posição exata de cada obra.</li>
           <li><strong>Obras do DNIT nas capitais:</strong> as 1.189 obras do DNIT (45,9% do investimento previsto) estão registradas na capital de cada UF, inclusive obras rodoviárias de outros municípios. Por isso, no mapa municipal, as capitais concentram valores elevados; os totais por UF não são afetados.</li>
           <li><strong>Valores ausentes:</strong> 6 obras não têm <code>Valor Investimento</code> na fonte. Elas continuam na contagem e na tabela, mas não entram na soma (não são tratadas como zero). Os territórios com essas obras são classificados pela soma dos valores informados, que pode ser menor que o total real; a consulta do território indica quantas obras estão sem valor. Território cujas obras não têm nenhum valor aparece como “Valor não informado”.</li>
-          <li><strong>Macrocausas de paralisação:</strong> campo original <code>Macrocausa da paralisação</code> (6 categorias, uma por obra), sem reclassificação. O gráfico considera só as obras paralisadas do recorte. A categoria “6. Não informado / outros” reúne obras sem causa informada (6.783 das 11.469 paralisadas) e causas sem macrocausa específica (“Outros”, “Fato ou evento não previsto” etc., 721); a falta de informação se concentra nas bases SISMOB, FUNASA, SESU, DNIT e SETEC. Uma obra “Em execução” (SIMEC-1109825) tem macrocausa “1. Contratual” na fonte e não entra no gráfico.</li>
+          <li><strong>Macrocausas de paralisação:</strong> campo original <code>Macrocausa da paralisação</code> (6 categorias, uma por obra), sem reclassificação. O gráfico mostra o investimento previsto (R$ milhões, soma dos valores informados) das obras paralisadas do recorte por macrocausa e o % do total. A categoria “6. Não informado / outros” reúne obras sem causa informada (6.783 das 11.469 paralisadas) e causas sem macrocausa específica (“Outros”, “Fato ou evento não previsto” etc., 721); a falta de informação se concentra nas bases SISMOB, FUNASA, SESU, DNIT e SETEC. Uma obra “Em execução” (SIMEC-1109825) tem macrocausa “1. Contratual” na fonte e não entra no gráfico.</li>
           <li><strong>Duplicidades potenciais:</strong> registros semelhantes foram mantidos por não haver duplicidade comprovada.</li>
           <li><strong>População:</strong> estimativa IBGE (01/07/2026), exibida na consulta do território como informação; não entra no cálculo do indicador.</li>
           <li><strong>Classes:</strong> limites fixos nas três situações, por nível: UFs 1 · 2 · 4 · 8 bi; municípios 1 · 3 · 10 · 30 mi (R$). O limite superior pertence à classe.</li>

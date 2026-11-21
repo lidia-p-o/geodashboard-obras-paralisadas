@@ -37,4 +37,11 @@ export function reaisCompacto(centavos) {
   return `R$ ${n2.format(r)}`;
 }
 
+/** Centavos → milhões de reais: "R$ 9.885,9 mi" (abaixo de R$ 1 mi, duas casas: "R$ 0,22 mi"). Só apresentação. */
+export function reaisMilhoes(centavos) {
+  if (centavos === null || centavos === undefined) return 'não informado';
+  const mi = centavos / 1e8;
+  return `R$ ${(Math.abs(mi) >= 1 || mi === 0 ? n1 : n2).format(mi)} mi`;
+}
+
 export const percentualFonte = (v) => (v === null || v === undefined ? 'não informado' : `${n2.format(v)}%`);

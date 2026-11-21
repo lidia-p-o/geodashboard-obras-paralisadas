@@ -61,5 +61,5 @@
   --larg-lateral: minmax(340px, 0.5fr);
   --alt-principal: clamp(420px, 58vh, 620px);
   --alt-tabela: clamp(240px, 32vh, 360px);
-  --alt-macrocausas: 352px;    /* módulo de macrocausas na coluna direita (rc8) */
+  --alt-macrocausas: 397px;    /* módulo de macrocausas na coluna direita (rc8) */
 }
